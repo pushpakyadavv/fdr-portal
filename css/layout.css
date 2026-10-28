@@ -1,12 +1,81 @@
-body{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
-.sidebar{background:var(--surface);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:16px}
-.side-brand{display:flex;align-items:center;gap:8px;margin-bottom:16px;font-weight:700}
-.side-brand img{width:28px}
-.sidebar nav{display:flex;flex-direction:column;gap:4px;flex:1}
-.sidebar nav a{padding:8px 10px;border-radius:8px;color:var(--text)}
-.sidebar nav a.active{background:#eff6ff;color:var(--primary);font-weight:600}
-.side-foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--border);padding-top:10px;font-size:.85rem}
-.main{display:flex;flex-direction:column;min-width:0}
-.topbar{height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--border);background:var(--surface)}
-.content{padding:24px}
-@media(max-width:800px){body{grid-template-columns:1fr}.sidebar{display:none}}
+/* Dashboard Grid Layout */
+body {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.side-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.side-brand img {
+  width: 28px;
+  height: 28px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.sidebar nav a {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--text);
+}
+
+.sidebar nav a.active {
+  background: #eff6ff;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.side-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border);
+  padding-top: 10px;
+  font-size: .85rem;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.content {
+  padding: 24px;
+}
+
+/* Mobile View */
+@media(max-width: 800px) {
+  body { grid-template-columns: 1fr; }
+  .sidebar { display: none; }
+}
