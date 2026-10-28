@@ -12,30 +12,53 @@
 <body class="login-page">
   <main class="login-card">
     <img src="assets/logo.svg" alt="AICTE" class="login-logo">
-    <h1>FDR Trust & Assurance Engine</h1>
-    <p class="muted">Secure sign-in via email magic link</p>
+    <h1>FDR Trust &amp; Assurance Engine</h1>
+    <p class="muted">Secure sign-in</p>
+
+    <!-- Demo Credentials Box -->
+    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 16px; text-align: left; font-size: 0.85rem;">
+      <strong style="color: #0f172a;">Demo Credentials:</strong><br>
+      <span style="color: #64748b;">Email:</span> <strong>adminn@test.com</strong><br>
+      <span style="color: #64748b;">Password:</span> <strong>password123</strong>
+    </div>
+
     <form id="login-form">
       <label>Email
-        <input type="email" id="email" required autocomplete="email" placeholder="you@institution.edu">
+        <input type="email" id="email" required value="adminn@test.com">
       </label>
-      <button class="btn btn-primary" type="submit">Send magic link</button>
+      <label>Password
+        <input type="password" id="password" required value="password123">
+      </label>
+      <button class="btn btn-primary" type="submit">Sign In</button>
     </form>
-    <p id="login-msg" class="muted"></p>
+    
+    <p id="login-msg" class="muted" style="margin-top: 16px;"></p>
   </main>
+
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0" crossorigin="anonymous"></script>
   <script src="js/config.js"></script>
   <script src="js/supabase-client.js"></script>
+  <script src="js/ui.js"></script>
   <script>
     document.getElementById('login-form').addEventListener('submit', async (e) => {
       e.preventDefault();
       const msg = document.getElementById('login-msg');
+      msg.textContent = 'Logging in...';
+      msg.style.color = '#64748b';
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
       try {
-        await sb.auth.signInWithOtp({
-          email: document.getElementById('email').value.trim(),
-          options: { emailRedirectTo: location.origin + '/dashboard.html' }
-        });
-        msg.textContent = 'Check your email for the magic link.';
-      } catch (err) { msg.textContent = safeError(err); }
+        const { error } = await sb.auth.signInWithPassword({ email, password });
+        if (error) throw error;
+        
+        // Success! Redirect to dashboard
+        window.location.href = 'dashboard.html';
+      } catch (err) {
+        msg.textContent = err.message || 'Login failed. Did you create the user in Supabase?';
+        msg.style.color = '#dc2626';
+      }
     });
   </script>
 </body>
