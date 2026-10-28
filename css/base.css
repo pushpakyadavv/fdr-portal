@@ -11,36 +11,33 @@
   --red: #dc2626; 
   --blue: #2563eb;
   --radius: 10px; 
-  --shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+  --shadow: 0 1px 3px rgba(0,0,0,.06),0 1px 2px rgba(0,0,0,.04);
 }
 
-* {
-  box-sizing: border-box;
+/* DARK MODE THEME */
+body.dark-mode {
+  --bg: #0f172a; 
+  --surface: #1e293b; 
+  --border: #334155;
+  --text: #f8fafc; 
+  --muted: #94a3b8;
+  --shadow: 0 4px 6px rgba(0,0,0,.3);
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: system-ui, sans-serif; background: var(--bg); color: var(--text); transition: background 0.3s, color 0.3s; }
+h1, h2, h3 { margin: 0 0 .5em; }
+a { color: var(--primary); text-decoration: none; }
+.muted { color: var(--muted); font-size: .875rem; }
+.mono { font-family: ui-monospace, monospace; font-size: .8rem; }
 
-h1, h2, h3 {
-  margin: 0 0 .5em;
+/* Floating Toolbar for Theme & Language */
+.floating-toolbar {
+  position: fixed; top: 16px; right: 16px; z-index: 9999;
+  display: flex; gap: 8px; background: var(--surface); 
+  padding: 8px; border-radius: 12px; border: 1px solid var(--border); box-shadow: var(--shadow);
 }
-
-a {
-  color: var(--primary);
-  text-decoration: none;
-}
-
-.muted {
-  color: var(--muted);
-  font-size: .875rem;
-}
-
-.mono {
-  font-family: ui-monospace, Menlo, Consolas, monospace;
-  font-size: .8rem;
+.floating-toolbar select, .floating-toolbar button {
+  background: var(--bg); color: var(--text); border: 1px solid var(--border); 
+  padding: 6px 10px; border-radius: 6px; cursor: pointer; font-weight: bold;
 }
