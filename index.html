@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.supabase.co; connect-src 'self' https://*.supabase.co; frame-ancestors 'none';">
+<title>FDR Portal — Login</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body class="login-page">
+  <main class="login-card">
+    <img src="assets/logo.svg" alt="AICTE" class="login-logo">
+    <h1>FDR Trust & Assurance Engine</h1>
+    <p class="muted">Secure sign-in via email magic link</p>
+    <form id="login-form">
+      <label>Email
+        <input type="email" id="email" required autocomplete="email" placeholder="you@institution.edu">
+      </label>
+      <button class="btn btn-primary" type="submit">Send magic link</button>
+    </form>
+    <p id="login-msg" class="muted"></p>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0" crossorigin="anonymous"></script>
+  <script src="js/config.js"></script>
+  <script src="js/supabase-client.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const msg = document.getElementById('login-msg');
+      try {
+        await sb.auth.signInWithOtp({
+          email: document.getElementById('email').value.trim(),
+          options: { emailRedirectTo: location.origin + '/dashboard.html' }
+        });
+        msg.textContent = 'Check your email for the magic link.';
+      } catch (err) { msg.textContent = safeError(err); }
+    });
+  </script>
+</body>
+</html>

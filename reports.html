@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.supabase.co; connect-src 'self' https://*.supabase.co; frame-ancestors 'none';">
+<title>Reports — FDR Portal</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+<aside class="sidebar" id="sidebar"></aside>
+<div class="main">
+  <header class="topbar" id="topbar"></header>
+  <section class="content">
+    <h2>Management Reports</h2>
+
+    <div class="report-card">
+      <div class="report-head">
+        <h3>1. Pending Verifications (<span id="r-pending-count">0</span>)</h3>
+        <button class="btn btn-ghost" data-export="pending">Export CSV</button>
+      </div>
+      <div id="r-pending"></div>
+    </div>
+
+    <div class="report-card">
+      <div class="report-head">
+        <h3>2. Upcoming Maturity (≤ 90 days) (<span id="r-upcoming-count">0</span>)</h3>
+        <button class="btn btn-ghost" data-export="upcoming">Export CSV</button>
+      </div>
+      <div id="r-upcoming"></div>
+    </div>
+
+    <div class="report-card">
+      <div class="report-head">
+        <h3>3. Missing Documents (<span id="r-missing-count">0</span>)</h3>
+        <button class="btn btn-ghost" data-export="missing">Export CSV</button>
+      </div>
+      <div id="r-missing"></div>
+    </div>
+
+    <div class="report-card">
+      <div class="report-head">
+        <h3>4. Cases Requiring Intervention (<span id="r-intervention-count">0</span>)</h3>
+        <button class="btn btn-ghost" data-export="intervention">Export CSV</button>
+      </div>
+      <div id="r-intervention"></div>
+    </div>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0" crossorigin="anonymous"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/store.js"></script>
+<script src="js/trust.js"></script>
+<script src="js/page-reports.js"></script>
+</body>
+</html>

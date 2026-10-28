@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://*.supabase.co; connect-src 'self' https://*.supabase.co; frame-ancestors 'none';">
+<title>Releases — FDR Portal</title>
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+<aside class="sidebar" id="sidebar"></aside>
+<div class="main">
+  <header class="topbar" id="topbar"></header>
+  <section class="content">
+    <div id="new-request" style="display:none">
+      <h2>New Release Request</h2>
+      <form id="req-form" class="req-form">
+        <label>FDR <select id="req-fdr"></select></label>
+        <label>Note <input id="req-note" placeholder="Reason / reference"></label>
+        <button class="btn btn-primary" type="submit">Submit Request</button>
+      </form>
+    </div>
+    <h2>Release Requests</h2>
+    <div id="release-table"></div>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0" crossorigin="anonymous"></script>
+<script src="js/config.js"></script>
+<script src="js/supabase-client.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/store.js"></script>
+<script src="js/audit.js"></script>
+<script src="js/page-release.js"></script>
+</body>
+</html>
